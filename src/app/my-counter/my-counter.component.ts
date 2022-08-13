@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import {Observable} from "rxjs";
 import { Store } from '@ngrx/store';
 import { increment,decrement,reset } from "../NgRx/counter.action";
@@ -8,11 +8,24 @@ import { increment,decrement,reset } from "../NgRx/counter.action";
   templateUrl: './my-counter.component.html',
   styleUrls: ['./my-counter.component.css']
 })
-export class MyCounterComponent implements OnInit {
+export class MyCounterComponent  {
+  count$: Observable<number>
 
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor(private store: Store<{count: number}>) {
+    this.count$ = store.select('count');
   }
+
+  increment(){
+    this.store.dispatch(increment());
+  }
+
+  decrement(){
+    this.store.dispatch(decrement());
+  }
+
+  reset(){
+    this.store.dispatch(reset());
+  }
+
 
 }
