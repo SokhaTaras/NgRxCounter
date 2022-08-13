@@ -102,5 +102,7 @@
       }
     }
   },
-  "defaultProject": "NgRxCounter"
+  "cli": {
+    "analytics": "7aa1aec0-45a9-4bcd-a615-67576d3205f7"
+  }
 }
